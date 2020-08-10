@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>sign in</title>
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center ">
+    {% if session['Email'] %}
+            <h4 class="m-4"> Hello, {{data.fullname}}</h4>
+
+            <a href="/handlesession" class="m-4 btn btn-outline-danger btn-lg">Log out</a>
+            
+        {% else %}
+    </div>
+    <div class="row justify-content-center ">
+        <h1>Welcome...</h1>
+    </div>
+    <div class="row justify-content-center ">
+        <a href="/signup" class="btn btn-lg btn-outline-success m-2">Sign up</a>
+        <a href="/signin" class="btn btn-lg btn-outline-success m-2">Sign in</a>
+    </div>
+
+    {% endif %}
+
+
+{% endblock %}

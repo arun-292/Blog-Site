@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>sign in</title>
+{% endblock %}
+
+{% block body %}
+
+<a href="/handlesession" class="float-right mr-4 btn btn-outline-danger btn-lg">Log out</a>
+
+  <div class="text-center">
+        {% if session['Email'] %}
+            <h1 class="m-4 text-success"> Hello, {{data.fullname}} , Glad to see you here...</h1>
+        
+            <section>
+                <div class="text-center">
+                    <h2 class="m-2 p-auto">Create New Blog !!!</h2>
+                    <form class="form-group" action="/posts/{{data._id}}" method="POST">
+                        <h4 class=" m-2 p-auto">Title:</h4><input class="col-4 mx-auto p-auto form-control" type='text' name='title' id='title'>
+                        <h4 class=" m-2 p-auto">Description:</h4><textarea class="col-4 mx-auto p-auto form-control" type='text' name='description' id='description'></textarea>
+                        <input class="btn btn-outline-light btn-lg col-4 m-3 mx-auto p-auto" type='submit' value='Add Blog'>
+                    </form>
+                </div>
+            </section>
+        </div>
+            
+           
+            <h1 class="text-success m-2 p-auto">All Blogs : </h1>
+            <div class="container-fluid">
+            {% for i in data.posts %}
+            <hr class="bg-white">
+            <div class="m-2">
+                <h2 class="text-primary">Title : {{i.title}}</h2>
+                <p>Description : {{i.description}}</p>
+                <a href="/posts/update/{{i.title}}/{{i.description}}"  class='btn btn-outline-success btn-lg col-2 m-1 ' value="update">update</a>
+                <a href="/posts/delete/{{i.title}}/{{i.description}}"  class='btn btn-outline-danger btn-lg col-2 m-1 ' value="delete">delete</a>
+            </div>
+        <hr class="bg-white">
+    </div>
+        
+    {% endfor %}
+            
+            
+        {% else %}
+            <h4>Please log in </h4><a href="/signin" class="btn btn-outline-success">Log in</a>
+        {% endif %}
+
+   
+  
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>Update Post</title>
+{% endblock %}
+
+{% block body %} 
+    <div class="text-center">
+        <h2 class="m-2 p-auto">Update Blog !!!</h2>
+        <form class="form-group" action="/posts/update/{{title}}/{{description}}" method="POST">
+            <h4 class=" m-2 p-auto">Title:</h4><input class="col-4 mx-auto p-auto form-control" type='text' name='title' id='title' value={{title}}></input>
+            <h4 class=" m-2 p-auto">Description:</h4><textarea class="col-4 mx-auto p-auto form-control" type='text' name='description' id='description'>{{description}}</textarea>
+            <input class="btn btn-outline-light btn-lg col-4 m-3 mx-auto p-auto" type='submit' value='Update'>
+        </form>
+    </div>
+
+{% endblock %}
